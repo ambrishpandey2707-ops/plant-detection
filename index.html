@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Garuna helps you explore plant leaves, botanical information and traditional medicinal uses.">
+  <title>Garuna | AI Medicinal Plant Assistant</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="logo" href="#home"><span>🌿</span> Garuna</a>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#identify">Identify</a>
+      <a href="#plants">Plant Library</a>
+      <a href="#assistant">AI Assistant</a>
+    </nav>
+
+    <a href="#identify" class="nav-button">Explore ↗</a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">YOUR LITTLE BOTANICAL GUIDE</span>
+        <h1>Not sure what plant it is? <em>Garuna can help.</em></h1>
+
+        <p class="hero-description">
+          Upload a leaf, discover the plant's name, explore its traditional
+          uses, and learn where it grows — all in one place.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#identify" class="primary-button">📷 Identify a Plant</a>
+          <a href="#assistant" class="secondary-button">Chat with Garuna</a>
+        </div>
+
+        <div class="hero-note">
+          <span>🌱</span>
+          <span>Explore nature. Learn something new.</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=85"
+          alt="Green plants in nature"
+        >
+        <div class="floating-card">
+          <span>🍃</span>
+          <div><strong>Nature, closer.</strong><p>One leaf at a time</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="identify-section" id="identify">
+      <div class="section-heading">
+        <span class="eyebrow">LEAF IDENTIFICATION</span>
+        <h2>Meet your <em>plant.</em></h2>
+        <p>Upload a clear photo of a leaf to explore a demo prediction.</p>
+      </div>
+
+      <div class="identify-layout">
+        <div class="upload-card">
+          <div class="upload-icon">📷</div>
+          <h3>Upload a plant photo</h3>
+          <p>Choose a clear image of a leaf from your device.</p>
+
+          <label for="plantImage" class="upload-button">Choose Image</label>
+          <input id="plantImage" type="file" accept="image/*" hidden>
+
+          <p class="upload-hint">JPG, PNG or WEBP</p>
+          <div id="imagePreview" class="image-preview"></div>
+
+          <button id="identifyButton" class="primary-button" type="button">
+            Identify Plant
+          </button>
+
+          <div id="predictionResult" class="prediction-result" aria-live="polite"></div>
+        </div>
+
+        <aside class="tips-card">
+          <h3>Tips for better results</h3>
+          <p>✓ Use a clear, focused leaf image</p>
+          <p>✓ Avoid blurry or very dark photos</p>
+          <p>✓ Include the whole leaf if possible</p>
+
+          <hr>
+
+          <h3>Try our demo plants</h3>
+          <div class="sample-plants">
+            <button class="sample-plant" data-plant="Tulsi" type="button">
+              <img src="https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=250&q=80" alt="">
+              Tulsi
+            </button>
+            <button class="sample-plant" data-plant="Neem" type="button">
+              <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=250&q=80" alt="">
+              Neem
+            </button>
+            <button class="sample-plant" data-plant="Mango" type="button">
+              <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=250&q=80" alt="">
+              Mango
+            </button>
+          </div>
+          <p class="demo-notice">Demo predictions are examples, not AI results.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="plants-section" id="plants">
+      <div class="section-heading">
+        <span class="eyebrow">EXPLORE THE GREEN WORLD</span>
+        <h2>Medicinal Plant <em>Library.</em></h2>
+        <p>Discover familiar plants and learn about their traditional uses.</p>
+      </div>
+
+      <div class="library-toolbar">
+        <input id="plantSearch" type="search" placeholder="Search plants..." aria-label="Search plants">
+        <div class="filter-buttons">
+          <button class="filter-button active" data-filter="All" type="button">All</button>
+          <button class="filter-button" data-filter="Herb" type="button">Herbs</button>
+          <button class="filter-button" data-filter="Tree" type="button">Trees</button>
+          <button class="filter-button" data-filter="Other" type="button">Other</button>
+        </div>
+      </div>
+
+      <div class="plant-grid" id="plantGrid">
+        <article class="plant-card" data-name="Tulsi" data-category="Herb">
+          <img src="https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&w=700&q=80" alt="Green leafy plant">
+          <div class="plant-card-content">
+            <span class="plant-tag">HERB · DEMO</span>
+            <h3>Tulsi</h3>
+            <p class="scientific-name">Ocimum tenuiflorum</p>
+            <p>Aromatic herb with a long history in traditional Indian practices.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Commonly used in herbal preparations.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Commonly cultivated in India.</p>
+            <button class="details-button" data-details="Tulsi" type="button">View Details ↗</button>
+          </div>
+        </article>
+
+        <article class="plant-card" data-name="Neem" data-category="Tree">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=700&q=80" alt="Green tree">
+          <div class="plant-card-content">
+            <span class="plant-tag">TREE · DEMO</span>
+            <h3>Neem</h3>
+            <p class="scientific-name">Azadirachta indica</p>
+            <p>A well-known tree with compound leaves.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Used in some traditional skin and personal-care preparations.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Widely grown in tropical regions.</p>
+            <button class="details-button" data-details="Neem" type="button">View Details ↗</button>
+          </div>
+        </article>
+
+        <article class="plant-card" data-name="Mango" data-category="Tree">
+          <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=80" alt="Mango fruit">
+          <div class="plant-card-content">
+            <span class="plant-tag">TREE · DEMO</span>
+            <h3>Mango</h3>
+            <p class="scientific-name">Mangifera indica</p>
+            <p>A tropical fruit tree with long, narrow leaves.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Various parts have been used in traditional practices.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Tropical and subtropical regions.</p>
+            <button class="details-button" data-details="Mango" type="button">View Details ↗</button>
+          </div>
+        </article>
+
+        <article class="plant-card" data-name="Aloe Vera" data-category="Other">
+          <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=80" alt="Succulent plant">
+          <div class="plant-card-content">
+            <span class="plant-tag">SUCCULENT · DEMO</span>
+            <h3>Aloe Vera</h3>
+            <p class="scientific-name">Aloe vera</p>
+            <p>A succulent plant widely known for its gel.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Its gel is used in some skin-care products.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Warm climates and cultivated gardens.</p>
+            <button class="details-button" data-details="Aloe Vera" type="button">View Details ↗</button>
+          </div>
+        </article>
+
+        <article class="plant-card" data-name="Ashwagandha" data-category="Herb">
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=700&q=80" alt="Green plants in a garden">
+          <div class="plant-card-content">
+            <span class="plant-tag">HERB · DEMO</span>
+            <h3>Ashwagandha</h3>
+            <p class="scientific-name">Withania somnifera</p>
+            <p>A plant used in traditional Ayurvedic preparations.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Often discussed in traditional wellness practices.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Cultivated in parts of India and other dry regions.</p>
+            <button class="details-button" data-details="Ashwagandha" type="button">View Details ↗</button>
+          </div>
+        </article>
+
+        <article class="plant-card" data-name="Mint" data-category="Herb">
+          <img src="https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&fit=crop&w=700&q=80" alt="Fresh green herb leaves">
+          <div class="plant-card-content">
+            <span class="plant-tag">HERB · DEMO</span>
+            <h3>Mint</h3>
+            <p class="scientific-name">Mentha species</p>
+            <p>A fragrant herb often used in food and drinks.</p>
+            <p class="plant-fact"><strong>Traditional use:</strong> Commonly used in food and some herbal preparations.</p>
+            <p class="plant-fact"><strong>Where it grows:</strong> Gardens and cultivated fields.</p>
+            <button class="details-button" data-details="Mint" type="button">View Details ↗</button>
+          </div>
+        </article>
+      </div>
+
+      <p id="noPlants" class="no-plants" hidden>No plants found. Try another search.</p>
+    </section>
+
+    <section class="assistant-section" id="assistant">
+      <div class="assistant-intro">
+        <span class="assistant-avatar">🌿</span>
+        <span class="eyebrow">MEET YOUR BOTANICAL GUIDE</span>
+        <h2>Hi, I'm <em>Garuna.</em></h2>
+        <p>Ask me about plant names, habitats and traditional uses.</p>
+
+        <div class="suggestion-list">
+          <button class="suggestion" data-question="Tell me about Tulsi" type="button">🌱 Tell me about Tulsi</button>
+          <button class="suggestion" data-question="Where does Neem grow?" type="button">📍 Where does Neem grow?</button>
+          <button class="suggestion" data-question="What is Aloe Vera traditionally used for?" type="button">🍃 Traditional uses of Aloe Vera</button>
+          <button class="suggestion" data-question="Is it safe to use an unidentified plant?" type="button">🛡️ Is an unidentified plant safe?</button>
+        </div>
+      </div>
+
+      <div class="chat-panel">
+        <div class="chat-header">
+          <span class="chat-status"></span>
+          <div><strong>Garuna Assistant</strong><p>Demo mode · Sample answers</p></div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages" aria-live="polite">
+          <div class="chat-bubble bot-message">
+            Namaste! 🌿 I'm Garuna. Ask me about plants and their traditional uses. My answers are educational examples, not medical advice.
+          </div>
+        </div>
+
+        <form class="chat-form" id="chatForm">
+          <input id="chatInput" type="text" placeholder="Ask me about a plant..." autocomplete="off" required>
+          <button type="submit" aria-label="Send message">➤</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="safety-note">
+      <strong>🌱 A note on safety</strong>
+      <p>Plant identification can be uncertain. Do not eat, apply or use a plant medicinally based only on this demo. Traditional uses are not proof of safety or effectiveness; consult a qualified healthcare professional for medical concerns.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo" href="#home"><span>🌿</span> Garuna</a>
+    <p>Learn about plants. Stay curious.</p>
+    <span>© 2026 Garuna · Educational demo project</span>
+  </footer>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
